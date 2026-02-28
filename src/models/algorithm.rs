@@ -39,7 +39,7 @@ impl fmt::Display for TaskType {
 
 /// Every ML algorithm soma knows how to use.
 ///
-/// SVC/SVR are excluded — they borrow the training data, which makes
+/// SVC/SVR are excluded. They borrow the training data, which makes
 /// serialization impossible.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, ValueEnum)]
 pub enum Algorithm {
@@ -124,7 +124,7 @@ impl Algorithm {
 
     /// Train a model with default hyperparameters.
     ///
-    /// `y` is always `&[f64]` — for classifiers it gets converted to the
+    /// `y` is always `&[f64]` for classifiers it gets converted to the
     /// appropriate integer type internally.
     pub fn train(self, x: &DenseMatrix<f64>, y: &[f64]) -> Result<TrainedModel> {
         match self {

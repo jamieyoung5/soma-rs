@@ -102,7 +102,7 @@ pub fn load_csv(path: &Path, target_col: &str) -> Result<Dataset> {
     })
 }
 
-/// Split a dataset into train and test partitions. No shuffling — the split
+/// Split a dataset into train and test partitions. No shuffling, the split
 /// just takes the first N rows for training and the rest for testing.
 pub fn split_train_test(dataset: &Dataset, test_fraction: f64) -> Result<SplitData> {
     if test_fraction <= 0.0 || test_fraction >= 1.0 {
@@ -135,8 +135,6 @@ pub fn split_train_test(dataset: &Dataset, test_fraction: f64) -> Result<SplitDa
         n_test,
     })
 }
-
-// --- internals ---
 
 /// Try to resolve a column name (or numeric index string) to the actual index.
 fn resolve_column_index(headers: &[String], col: &str) -> Result<usize> {
